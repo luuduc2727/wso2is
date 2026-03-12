@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+-->
+
+<svg id="authorize-icon" class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M7.45376 2.5C7.45376 3.32843 6.78219 4 5.95376 4C5.12534 4 4.45376 3.32843 4.45376 2.5C4.45376 1.67157 5.12534 1 5.95376 1C6.78219 1 7.45376 1.67157 7.45376 2.5ZM8.45376 2.5C8.45376 3.88071 7.33447 5 5.95376 5C4.57305 5 3.45376 3.88071 3.45376 2.5C3.45376 1.11929 4.57305 0 5.95376 0C7.33447 0 8.45376 1.11929 8.45376 2.5ZM5.95326 6C2.91053 6 0.422402 8.25514 0.01241 11.5381C-0.0918736 12.3731 0.600271 13 1.35511 13L4.99976 12.9998C5.2759 12.9998 5.49975 12.7759 5.49973 12.4997C5.49972 12.2236 5.27585 11.9998 4.99971 11.9998L1.35506 12C1.11336 12 0.985492 11.8159 1.0047 11.662C1.35721 8.83933 3.4544 7 5.95326 7C6.22941 7 6.45326 6.77614 6.45326 6.5C6.45326 6.22386 6.22941 6 5.95326 6Z"
+        fill="black" />
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M11.5 5C10.3954 5 9.5 5.89543 9.5 7V8.5H8.5C7.67157 8.5 7 9.17157 7 10V12.5C7 14.433 8.567 16 10.5 16H12.5C14.433 16 16 14.433 16 12.5V10C16 9.17157 15.3284 8.5 14.5 8.5H10.5V7C10.5 6.44772 10.9477 6 11.5 6C12.0523 6 12.5 6.44772 12.5 7C12.5 7.27614 12.7239 7.5 13 7.5C13.2761 7.5 13.5 7.27614 13.5 7C13.5 5.89543 12.6046 5 11.5 5ZM8 10C8 9.72386 8.22386 9.5 8.5 9.5H14.5C14.7761 9.5 15 9.72386 15 10V12.5C15 13.8807 13.8807 15 12.5 15H10.5C9.11929 15 8 13.8807 8 12.5V10Z"
+        fill="black" />
+    <path d="M11.5 11.5V12.5" stroke="black" stroke-linecap="round" />
+</svg>
