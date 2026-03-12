@@ -1,0 +1,1309 @@
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Ultralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-UltralightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-SemiboldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-HeavyItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../../../fonts/SF/SF-Pro-Display-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+.login-portal.layout {
+  --font-sans: "SF Pro Display", system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url("../../../images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ font-family: var(--font-sans) !important; 
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.login-portal.layout *,
+.login-portal.layout *::before,
+.login-portal.layout *::after {
+  box-sizing: border-box;
+}
+
+/* Chiều cao header: 4px strip + 64px main (desktop), 89px mobile */
+.login-portal.layout {
+  --app-header-height: 68px;
+}
+
+/* Chỉ cuộn bên trong .page-wrapper, không cuộn cả trang → form không trèo lên header */
+body.login-portal.layout {
+  overflow: auto;
+  height: 100vh;
+}
+
+.login-portal.layout .app-header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+  border: none !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
+  z-index: 100;
+}
+.login-portal.layout .app-header-top-strip {
+  height: 4px;
+  background: #2d2d2d;
+  width: 100%;
+  margin: 0;
+  border: none;
+}
+.login-portal.layout .app-header-bar .flex { display: flex; }
+.login-portal.layout .app-header-bar .flex-1 { flex: 1 1 0%; }
+.login-portal.layout .app-header-bar .justify-between { justify-content: space-between; }
+.login-portal.layout .app-header-bar .items-center { align-items: center; }
+.login-portal.layout .app-header-bar .mx-auto { margin-left: auto; margin-right: auto; }
+.login-portal.layout .app-header-bar .container { width: 100%; box-sizing: border-box; }
+
+.login-portal.layout .app-header-main {
+  display: flex;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  min-height: 64px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 60px;
+  background: #ffffff;
+  border: none !important;
+  border-top: none !important;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-sizing: border-box;
+}
+.login-portal.layout .app-header-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+.login-portal.layout .app-header-logo:hover {
+  opacity: 0.9;
+}
+.login-portal.layout .app-header-logo-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+}
+.login-portal.layout .app-header-logo-img-logomark {
+  display: none;
+}
+.login-portal.layout .app-header-logo-img-default {
+  display: block;
+}
+.ui.visible.visible.visible.visible.message{
+  margin: 0px;
+  padding: 12px;
+  background: #FFE6E6;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #1A1A1A;
+}
+.login-portal.layout .error-message-content{
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.login-portal.layout .app-header-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.login-portal.layout .app-header-hamburger:hover {
+  background: #f5f5f5;
+}
+.login-portal.layout .app-header-hamburger-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.login-portal.layout .app-header-nav {
+  display: flex;
+  align-items: center;
+}
+.login-portal.layout .app-header-nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.login-portal.layout .app-header-nav-list li {
+  margin: 0;
+  padding: 0;
+}
+.login-portal.layout .app-header-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 64px;
+  padding: 8px 36px;
+  gap: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #595959;
+  text-decoration: none;
+  background: transparent;
+  border-bottom: 4px solid transparent;
+  border-radius: 0;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.login-portal.layout .app-header-nav-link:hover {
+  color: #4a4a4a;
+  background: #f7f7f7;
+  border-bottom-color: #dd0000;
+}
+.login-portal.layout .app-header-nav-link:focus-visible {
+  background: #f7f7f7;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(221, 0, 0, 0.15);
+}
+.login-portal.layout .app-header-nav-link[data-active="true"] {
+  color: #1a1a1a;
+  font-weight: 600;
+  border-bottom-color: #dd0000;
+}
+.login-portal.layout .app-header-nav-link:disabled,
+.login-portal.layout .app-header-nav-link[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.login-portal.layout .app-header-nav-link svg:not([class*="size-"]) {
+  width: 16px;
+  height: 16px;
+}
+.login-portal.layout .app-header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+  min-height: 64px;
+}
+.login-portal.layout .app-header-lang-wrap {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  min-height: 64px;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown {
+  width: fit-content !important;
+  min-width: 120px;
+  height: 64px;
+  padding: 16px 24px;
+  gap: 8px;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 0;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown.active,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown[aria-expanded="true"] {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown:focus-visible {
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  outline-offset: 2px;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown.disabled,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown[aria-disabled="true"] {
+  cursor: not-allowed;
+  background-color: #eee !important;
+  color: #999 !important;
+  border-color: transparent !important;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown .dropdown.icon,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown .language-selector-chevron-icon,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown [class*="icon"] {
+  pointer-events: none;
+  flex-shrink: 0;
+  color: #c00;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown.disabled .dropdown.icon,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown.disabled .language-selector-chevron-icon,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown.disabled [class*="icon"],
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown[aria-disabled="true"] .dropdown.icon,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown[aria-disabled="true"] .language-selector-chevron-icon {
+  color: #999 !important;
+  opacity: 0.7;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown .dropdown.icon,
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown .language-selector-chevron-icon {
+  margin-top: 0;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown [class*="icon"]:not([class*="size-"]),
+.login-portal.layout .app-header-lang-wrap #language-selector-dropdown .language-selector-chevron-icon {
+  width: 16px;
+  height: 16px;
+}
+.login-portal.layout .app-header-lang-wrap #language-selector-selected-text {
+  line-height: 1.5;
+}
+.login-portal.layout .app-header-lang-wrap .ui.dropdown > .menu {
+  top: 100% !important;
+  bottom: auto !important;
+  margin-top: 6px !important;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+}
+.login-portal.layout .app-header-lang-wrap .ui.dropdown.active > .menu {
+  top: 100% !important;
+  bottom: auto !important;
+}
+.login-portal.layout .app-header-chevron {
+  color: #666;
+}
+.login-portal.layout .app-header-login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background: #ED1B24;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  align-self: stretch;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+.login-portal.layout .app-header-login-btn:hover {
+  background: #000000;
+  color: #fff !important;
+}
+.login-portal.layout .app-header-arrow,
+.login-portal.layout .app-header-arrow-icon {
+  font-size: 16px;
+  line-height: 1;
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.login-portal.layout .app-header-arrow-icon {
+  font-size: 0;
+}
+
+/* Nút Login responsive: chỉ hiện khi < 1024px, ẩn mặc định */
+.login-portal.layout .app-header-login-btn-responsive {
+  display: none;
+}
+
+/* Wrapper mobile: nhóm Login + separator + Hamburger (ẩn desktop, hiện trong media query) */
+.login-portal.layout .app-header-mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+  min-height: 64px;
+}
+.login-portal.layout .app-header-mobile-actions-sep {
+  width: 1px;
+  height: 56px;
+  background: #3030302B;
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 2.67px;
+}
+
+@media (max-width: 1023px) {
+  .login-portal.layout {
+    --app-header-height: 89px;
+  }
+  .login-portal.layout .app-header-main {
+    padding: 0 16px;
+    height: 85px;
+    min-height: 85px;
+  }
+  .login-portal.layout .app-header-logo-img-default {
+    display: none;
+  }
+  .login-portal.layout .app-header-logo-img-logomark {
+    display: block;
+    width: 35px;
+    height: 24px;
+    object-fit: contain;
+  }
+  /* Responsive: chỉ ẩn nav; giữ logo (Logomark) + nút Login + hamburger trên header */
+  .login-portal.layout .app-header-nav {
+    display: none !important;
+  }
+  /* Trên header mobile: ẩn language, chỉ hiện nút Login (language nằm trong drawer) */
+  .login-portal.layout .app-header-right .app-header-lang-wrap {
+    display: none !important;
+  }
+  /* Wrapper mobile: full height như header, gap 32px; margin-right để cả khối dịch vào trong, không đè padding header */
+  .login-portal.layout .app-header-mobile-actions {
+    display: flex !important;
+    align-items: center;
+    height: 85px;
+    min-height: 85px;
+    margin-right: 16px;
+    box-sizing: border-box;
+  }
+  .login-portal.layout .app-header-login-btn-desktop {
+    display: none !important;
+  }
+  /* Nút Login responsive: padding 32px, full chiều cao header theo Figma */
+  .login-portal.layout .app-header-login-btn-responsive {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    height: 100%;
+    min-height: 0;
+    padding: 32px !important;
+    margin: 0;
+    background: #FFFFFF !important;
+    color: #ED1C24 !important;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  .login-portal.layout .app-header-login-btn-responsive:hover {
+    background: #F6F6F6 !important;
+    color: #ED1C24 !important;
+  }
+  .login-portal.layout .app-header-right {
+    display: flex !important;
+  }
+  .login-portal.layout .app-header-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 16px 0px 16px 32px;
+    align-self: center;
+    min-height: 56px;
+  }
+}
+
+/* Drawer overlay + panel */
+.login-portal.layout .app-header-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.25s ease;
+}
+@media (min-width: 1024px) {
+  .login-portal.layout .app-header-drawer {
+    display: none;
+  }
+}
+.login-portal.layout .app-header-drawer.app-header-drawer-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+.login-portal.layout .app-header-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.login-portal.layout .app-header-drawer.app-header-drawer-open .app-header-drawer-backdrop {
+  opacity: 1;
+}
+.login-portal.layout .app-header-drawer-panel {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  box-sizing: border-box;
+}
+.login-portal.layout .app-header-drawer.app-header-drawer-open .app-header-drawer-panel {
+  transform: translateX(0);
+}
+.login-portal.layout .app-header-drawer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+.login-portal.layout .app-header-drawer-nav-link {
+  display: block;
+  padding: 24px 0px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #212121;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+.login-portal.layout .app-header-drawer-nav-link:hover {
+  background: #f7f7f7;
+  color: #ED1B24;
+}
+.login-portal.layout .app-header-drawer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+}
+.login-portal.layout .app-header-drawer-lang-wrap {
+  width: fit-content;
+}
+.login-portal.layout .app-header-drawer-lang-wrap #language-selector-dropdown,
+.login-portal.layout .app-header-drawer-lang-wrap #language-selector-dropdown-drawer {
+  width: 100% !important;
+  min-width: 0;
+  min-height: fit-content;
+  padding: 0px;
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #000000;
+  border: none;
+}
+.login-portal.layout .app-header-drawer-lang-wrap #language-selector-selected-text-drawer {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+/* Dropdown menu (popover) khi mở trong drawer: border #FFF, shadow Elevation-Sm */
+.login-portal.layout .app-header-drawer-lang-wrap #language-selector-dropdown-drawer > .menu {
+  border: 1px solid #FFFFFF;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px !important;
+  background: #FFFFFF;
+  top: 25px;
+  width: fit-content;
+}
+.login-portal.layout .app-header-drawer-login-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #ED1B24;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.login-portal.layout .app-header-drawer-login-btn:hover {
+  background: #000;
+}
+
+.login-portal.layout .page-wrapper.layout-file {
+  margin-top: var(--app-header-height);
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 0 0 0 48px;
+  height: calc(100vh - var(--app-header-height));
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.login-portal.layout.email-otp-portal-layout .page-wrapper.layout-file {
+  justify-content: flex-start;
+}
+
+.login-portal.layout .center-segment {
+  width: 100%;
+  margin: 0;
+  padding: 24px 16px;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  min-height: min-content;
+}
+
+.login-portal.layout .center-segment > .ui.container {
+  width: 500px !important;
+  max-width: 500px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+}
+
+.login-portal.layout .center-segment > .ui.container > .ui.segment {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.login-signup-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.login-signup-cards-wrapper .login-card,
+.login-signup-cards-wrapper .signup-card {
+  margin: 0;
+}
+
+.login-portal.layout .login-card h3 {
+  --font-sans: "SF Pro Display", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+.login-portal.layout .login-card {
+  width: 500px;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.login-portal.layout .login-card h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+  color: #000000;
+}
+
+.login-portal.layout .login-card .ui.form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ui.form input[type=text]{
+  padding: 0px 16px;
+}
+
+.login-portal.layout .login-card .ui.form > .field,
+.login-portal.layout .login-card .ui.form > .buttons,
+.login-portal.layout .login-card .ui.form > .mt-0,
+.login-portal.layout .login-card .ui.form > .ui.divider {
+  margin: 0;
+}
+
+.login-portal.layout .login-card .ui.form .field,
+.login-portal.layout .login-card .ui.form .field.m-0,
+.login-portal.layout .login-card .ui.form .field.mt-3,
+.login-portal.layout .login-card .ui.form .field.mb-0,
+.login-portal.layout .login-card .ui.form .field.external-link-container,
+.login-portal.layout .login-card .ui.form .field.field-label-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.password-and-forgot-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-portal.layout .login-card .ui.form .field label {
+  display: block;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input {
+  width: 420px !important;
+  max-width: 100%;
+  display: flex !important;
+  align-items: center;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input input {
+
+  max-width: 100%;
+  height: 40px;
+  padding: 0px 16px;
+  border: 1px solid #C5C5C5;
+  background: transparent !important;
+  color: #1A1A1A;
+  outline: none;
+  --font-sans: "SF Pro Display", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input input::placeholder {
+  color: #A2A2A2;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  --font-sans: "SF Pro Display", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input input:focus {
+  outline: none;
+  border-color: #3393FF;
+  
+  
+
+}
+
+.login-portal.layout .login-card .ui.form .field.input-error .ui.input input {
+  border-color: #CC0000;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input .icon {
+  position: absolute;
+  left: 12px;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #888;
+  pointer-events: none;
+}
+
+.login-portal.layout .center-segment>.ui.container.medium{
+  max-width: none !important;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input .icon.right-align {
+  left: auto;
+  right: 12px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input .password-toggle,
+.login-portal.layout .login-card .ui.form .field .ui.input #password-eye {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: auto !important;
+  right: 14px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  margin: 0 !important;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input .password-toggle svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+  margin: 0 !important;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input .password-toggle #eye-open {
+  display: block;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input .password-toggle #eye-closed {
+  display: none !important;
+}
+
+.login-portal.layout .login-card .ui.form .field .ui.input {
+  position: relative;
+}
+
+.login-portal.layout .login-card .ui.form .buttons.mt-2,
+.login-portal.layout .login-card .ui.form .field.external-link-container {
+  margin: 0 !important;
+}
+
+.login-portal.layout .login-card .forgot-password-row {
+  text-align: right;
+}
+
+.login-portal.layout .login-card .hide-forgot-username {
+  display: none;
+}
+
+.login-portal.layout .login-card .field.external-link-container a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-portal.layout .login-card .field.external-link-container a:hover {
+  text-decoration: underline;
+}
+
+.login-portal.layout .login-card .ui.checkbox label {
+  margin: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.login-portal.layout .login-card .ui.checkbox input {
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+}
+
+.login-portal.layout .login-card .ui.form .buttons .button#sign-in-button,
+.login-portal.layout .login-card .ui.form .buttons .btn-420x40,
+.login-portal.layout .login-card .ui.form .buttons button#sign-in-button,
+.login-portal.layout .login-card .ui.primary.button {
+  width: 100% !important;
+  max-width: 100%;
+  height: 40px;
+  max-height: 40px;
+  margin: 0 !important;
+  padding: 0 20px !important;
+  background: #000000;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  border-radius: 9999px;
+  color: #FFFFFF !important;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.login-portal.layout .login-card .ui.form .buttons .btn-420x40:hover,
+.login-portal.layout .login-card .ui.form .buttons .btn-420x40:focus,
+.login-portal.layout .login-card .ui.form .buttons .btn-420x40:active {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  background: #303030 !important;
+}
+
+.ui.selection.active.dropdown:hover {
+  box-shadow: none;
+}
+.ui.selection.active.dropdown {
+  box-shadow: none;
+}
+
+.login-portal.layout .login-card .ui.form .buttons .button#sign-in-button:hover,
+.login-portal.layout .login-card .ui.primary.button:hover {
+  background: #303030 ;
+}
+
+.btn-420x40 {
+
+  line-height: 24px;
+  --font-sans: "SF Pro Display", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+.btn-420x40:hover,
+.btn-420x40:focus,
+.btn-420x40:active {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.login-portal.layout .signup-card {
+  width: 500px;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-portal.layout .signup-card .signup-card-text {
+  margin: 0;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.login-portal.layout .signup-card .create-account-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: 40px;
+  padding: 8px 24px;
+  border: 1px solid #000000 ;
+  border-radius: 9999px;
+  color: #000000 !important;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  box-shadow: none;
+  --font-sans: "SF Pro Display", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.login-portal.layout .signup-card .create-account-btn:hover {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+.login-portal.layout .page-wrapper.layout-file .footer {
+  margin-top: 24px;
+  padding: 16px;
+  border: none !important;
+  background: transparent !important;
+  text-align: center;
+}
+
+.login-portal.layout .page-wrapper.layout-file .footer .ui.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.login-portal.layout .page-wrapper.layout-file .footer a {
+  color: #666;
+  font-size: 13px;
+}
+
+.login-portal.layout .ui.segment.segment-layout .ui.header:first-child {
+  display: none;
+}
+
+.login-portal.layout .login-card .ui.divider {
+  margin: 0;
+}
+
+.login-portal.layout .login-card .ui.form .mt-1,
+.login-portal.layout .login-card .ui.form .mt-3,
+.login-portal.layout .login-card .ui.form .mt-4,
+.login-portal.layout .login-card .ui.form .mb-0 {
+  margin: 0 !important;
+}
+
+.login-portal.layout .center-segment>.ui.container>.ui.segment .segment-form .buttons {
+  margin: 0px;
+}
+
+.a-forgot-password {
+  color: #3393FF;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+a:hover {
+  color: #212121;
+}
+
+.login-portal.layout .otp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.login-portal.layout .otp-card .otp-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.login-portal.layout .otp-card .otp-part-1.otp-instruction-and-input {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.login-portal.layout .otp-card .otp-expiry-wrap {
+  margin: 0;
+}
+.login-portal.layout .otp-card .otp-expiry-wrap .otp-expiry-row {
+  margin: 0;
+}
+.login-portal.layout .otp-card .otp-buttons-wrap,
+.login-portal.layout .otp-card .otp-back-btn-wrap {
+  margin: 0;
+}
+.login-portal.layout .otp-card .otp-buttons-wrap .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+}
+.login-portal.layout .otp-card h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+  color: #000000;
+  text-align: left;
+}
+.login-portal.layout .otp-card .otp-instruction {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+}
+.login-portal.layout .otp-card .segment-form .ui.form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.login-portal.layout .otp-card .field.field-label-input label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8px;
+  display: block;
+}
+.login-portal.layout .otp-card .otp-input-wrapper,
+.login-portal.layout .otp-card .otp-input-wrapper input.otp-input {
+  border-radius: 8px;
+  border: 1px solid #C5C5C5;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+.login-portal.layout .otp-card .otp-boxes-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  padding: 0px 30px;
+  height: auto;
+  border: none;
+  background: transparent;
+}
+.login-portal.layout .otp-card .otp-boxes-wrapper .otp-box-input {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0 10px !important;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #C5C5C5;
+  -moz-appearance: textfield;
+}
+.login-portal.layout .otp-card .otp-boxes-wrapper .otp-box-input::-webkit-outer-spin-button,
+.login-portal.layout .otp-card .otp-boxes-wrapper .otp-box-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.login-portal.layout .otp-card .otp-boxes-wrapper .otp-box-input:focus {
+  border-color: #3393FF;
+  outline: none;
+}
+.login-portal.layout .otp-card .otp-boxes-wrapper:focus-within {
+  border: none;
+  outline: none;
+}
+.login-portal.layout .otp-card .otp-input-wrapper:focus-within {
+  border-color: #3393FF;
+  outline: none;
+}
+.login-portal.layout .otp-card .otp-expiry-row {
+  text-align: right;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #333;
+}
+.login-portal.layout .otp-card .otp-expiry-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+.login-portal.layout .otp-card .otp-expiry-circle-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.login-portal.layout .otp-card .otp-expiry-circle-bg {
+  stroke: #DEDEDE;
+}
+.login-portal.layout .otp-card .otp-expiry-circle-progress {
+  stroke: #000000;
+}
+.login-portal.layout .otp-card .otp-expiry-circle-value {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+.login-portal.layout .otp-card .otp-buttons-wrap .buttons .btn-420x40,
+.login-portal.layout .otp-card .buttons .btn-420x40 {
+  width: 100%;
+  max-width: 100%;
+  height: 40px;
+}
+.login-portal.layout .otp-card .resend-otp-link {
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.login-portal.layout .otp-card .resend-otp-link:hover:not(.disabled) {
+  color: #3393FF;
+  text-decoration: underline;
+}
+.login-portal.layout .otp-card .resend-otp-link.disabled {
+  cursor: not-allowed;
+  color: #999;
+}
+.login-portal.layout .otp-card .otp-back-btn-wrap,
+.login-portal.layout .otp-card .otp-back-row {
+  text-align: center;
+  margin: 0;
+}
+.login-portal.layout .otp-card .back-link {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+.login-portal.layout .otp-card .back-link:hover {
+  color: #3393FF;
+}
+.login-portal.layout .otp-card .otp-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  height: 40px;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.login-portal.layout .otp-card .otp-back-button:hover {
+  background: #F5F5F5;
+  color: #1A1A1A;
+  border-color: #C5C5C5;
+}
