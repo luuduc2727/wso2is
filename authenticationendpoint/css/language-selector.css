@@ -172,7 +172,7 @@
 }
 
 .ui.selection.dropdown .menu>.item{
-    padding: 6px 32px 6px 8px !important;
+    padding: 6px 0px 6px 8px !important;
     border-top: none;
     font-size: 14px;
     line-height: calc(1.24 / 0.875);
