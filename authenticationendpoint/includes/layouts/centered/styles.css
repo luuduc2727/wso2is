@@ -238,8 +238,17 @@ body.login-portal.layout {
 }
 .login-portal.layout .error-message-content{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
+}
+.login-portal.layout .error-message-content .error-icon {
+  flex-shrink: 0;
+  display: block;
+}
+.login-portal.layout .error-message-content > div {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.4;
 }
 .login-portal.layout .app-header-hamburger {
   display: none;
@@ -694,7 +703,6 @@ body.login-portal.layout {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 0;
-  padding: 0 0 0 48px;
   height: calc(100vh - var(--app-header-height));
   min-height: 0;
   overflow: auto;
@@ -713,8 +721,6 @@ body.login-portal.layout {
 .login-portal.layout .center-segment {
   width: 100%;
   margin: 0;
-  padding: 24px 16px;
-  padding-top: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -724,9 +730,7 @@ body.login-portal.layout {
 }
 
 .login-portal.layout .center-segment > .ui.container {
-  width: 500px !important;
-  max-width: 500px !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
   padding: 0 !important;
 }
@@ -743,6 +747,7 @@ body.login-portal.layout {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  max-width: 500px;
 }
 
 .login-signup-cards-wrapper .login-card,
@@ -755,8 +760,6 @@ body.login-portal.layout {
   font-family: var(--font-sans);
 }
 .login-portal.layout .login-card {
-  width: 500px;
-  max-width: 500px;
   background: #ffffff;
   border-radius: 16px;
   padding: 40px;
@@ -876,7 +879,7 @@ body.login-portal.layout {
 }
 
 .login-portal.layout .center-segment>.ui.container.medium{
-  max-width: none !important;
+  max-width: 100% !important;
 }
 
 .login-portal.layout .login-card .ui.form .field .ui.input .icon.right-align {
@@ -1014,8 +1017,6 @@ body.login-portal.layout {
 }
 
 .login-portal.layout .signup-card {
-  width: 500px;
-  max-width: 500px;
   background: #ffffff;
   border-radius: 16px;
   padding: 40px;
@@ -1323,4 +1324,8 @@ a:hover {
 
 .ui.button{
   margin: 0px;
+}
+
+.login-portal.layout .center-segment>.ui.container .ui.segment.segment-layout{
+  min-width: auto;
 }

@@ -278,7 +278,7 @@
                             </div>
                             <%-- Nút Back: history back --%>
                             <div class="otp-back-btn-wrap">
-                                <a class="back-link btn-420x40 otp-back-button" id="goBackLink" href="javascript:void(0)" onclick="history.back(); return false;"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "otp.back")%></a>
+                                <a class="back-link btn-420x40 otp-back-button" id="goBackLink" onclick="event.preventDefault(); window.history.back();"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "otp.back")%></a>
                             </div>
 
                             <input id="multiOptionURI" type="hidden" name="multiOptionURI" value="<%=Encode.forHtmlAttribute(request.getParameter("multiOptionURI"))%>" />
