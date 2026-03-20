@@ -1,0 +1,21 @@
+<!--
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+-->
+
+<svg id="account-management-outline" class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.966815 3.0856C0.870263 2.85814 0.626057 2.73854 0.393259 2.79106L0.306805 2.81894C0.079344 2.91549 -0.0402607 3.1597 0.0122564 3.3925L0.0401433 3.47895L1.90643 7.87564L6.30185 6.00876C6.55772 5.90008 6.67704 5.60456 6.56837 5.34869C6.47176 5.12125 6.22753 5.0017 5.99474 5.05427L5.9083 5.08218L3.1873 6.23723C3.33666 5.7616 3.54271 5.31006 3.79879 4.89129C4.51651 3.71764 5.62728 2.80143 6.9847 2.33403C10.1389 1.24797 13.5762 2.92449 14.6623 6.07865C15.7484 9.23281 14.0718 12.6702 10.9177 13.7563C9.43063 14.2683 7.83806 14.1789 6.43682 13.5371C5.74274 13.2192 5.11383 12.7731 4.58587 12.2221C4.39355 12.0214 4.07492 12.0146 3.87419 12.2069C3.67347 12.3992 3.66666 12.7179 3.85899 12.9186C4.47507 13.5616 5.20845 14.0818 6.0176 14.4524C7.65162 15.2008 9.51146 15.3052 11.2454 14.7081C14.9253 13.441 16.8812 9.43076 15.6142 5.7509C14.3471 2.07105 10.3368 0.115106 6.65695 1.38218C4.94339 1.97221 3.5663 3.17602 2.743 4.70945C2.52313 5.11898 2.34275 5.55201 2.20602 6.00313L0.966815 3.0856ZM0.966815 3.0856L0.964339 3.08665L0.966815 3.0856Z" fill="black"/>
+</svg>

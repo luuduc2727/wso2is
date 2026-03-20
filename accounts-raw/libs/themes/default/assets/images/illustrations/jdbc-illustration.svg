@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Copyright (c) 2023, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+-->
+
+<svg class="icon" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M12 72.9589C12 77.9522 25.8792 84 43 84C52.9632 84 61.8287 82.1832 67.5 79.7567L67 79L66 77.5L64.5 73.3151L63.5 68.3836L68 62.2192L73.3339 60.9863L74 49.4795V24C74 25.2329 67.5 32.2192 41.5 32.2192C15 32.2192 12 24 12 24V72.9589Z"
+        fill="#ECECEC" />
+    <ellipse cx="43" cy="22" rx="31" ry="11" fill="url(#paint0_linear_1913_205)" stroke="white" />
+    <path d="M12 21.5V73" stroke="white" />
+    <path d="M74 21.5V60.5" stroke="white" stroke-linecap="round" />
+    <path d="M70 31V39.5" stroke="white" stroke-linecap="round" />
+    <path d="M70 49V57.5" stroke="white" stroke-linecap="round" />
+    <path d="M74 39C74 45.0751 60.1208 50 43 50C25.8792 50 12 45.0751 12 39" stroke="white" />
+    <path d="M74 56C74 62.0751 60.1208 67 43 67C25.8792 67 12 62.0751 12 56" stroke="white" />
+    <path d="M12 73C12 79.0751 25.8792 84 43 84C52.6266 84 61.2283 82.443 66.9142 80" stroke="white" />
+    <path
+        d="M90.3601 70H92.4999C93.8801 70 95 71.12 95 72.4998V76.4999C95 77.88 93.8801 79 92.4999 79L90.3604 79.0003C90.0102 80.2305 89.5204 81.4204 88.9003 82.5304L90.4103 84.0404C90.88 84.5201 91.1402 85.1403 91.1402 85.8102C91.1402 86.4801 90.8804 87.1099 90.4103 87.58L87.5804 90.4099C86.6003 91.3799 85.0204 91.39 84.0403 90.4099L82.5303 88.8999C81.4203 89.52 80.2305 90.0102 79.0003 90.3601V92.4999C79.0003 93.8801 77.8804 95 76.5002 95H72.5001C71.12 95 70 93.8801 70 92.4999V90.3601C68.7699 90.0098 67.5799 89.52 66.47 88.8999L64.96 90.4099C63.98 91.39 62.3899 91.3799 61.42 90.4099L58.59 87.58C58.1203 87.1103 57.8601 86.4801 57.8601 85.8102C57.8601 85.1403 58.12 84.5105 58.59 84.0404L60.1001 82.5304C59.48 81.4204 58.9898 80.2305 58.6399 79.0003H56.5001C55.1199 79.0003 54 77.8804 54 76.5002V72.5001C54 71.12 55.1199 70 56.5001 70L58.6396 69.9997C58.9898 68.7695 59.4796 67.5796 60.0997 66.4696L58.5897 64.9596C58.12 64.4799 57.8598 63.8597 57.8598 63.1898C57.8598 62.5199 58.1196 61.8901 58.5897 61.42L61.4196 58.5901C62.3997 57.6201 63.9796 57.6201 64.9597 58.5901L66.4697 60.1001C67.5797 59.48 68.7695 58.9898 69.9997 58.6399V56.5001C69.9997 55.1199 71.1196 54 72.4998 54H76.4999C77.88 54 79 55.1199 79 56.5001V58.6399C80.2301 58.9902 81.4201 59.48 82.53 60.1001L84.04 58.5904C85.02 57.6205 86.6101 57.6205 87.58 58.5904L90.41 61.4203C90.8797 61.89 91.1399 62.5202 91.1399 63.1901C91.1399 63.8601 90.88 64.4899 90.41 64.96L88.8999 66.47C89.52 67.58 90.0102 68.7699 90.3601 70Z"
+        fill="#67777E" />
+    <path
+        d="M82.1875 74.5C82.1875 78.7457 78.7457 82.1875 74.5 82.1875C70.2543 82.1875 66.8125 78.7457 66.8125 74.5C66.8125 70.2543 70.2543 66.8125 74.5 66.8125C78.7457 66.8125 82.1875 70.2543 82.1875 74.5Z"
+        fill="white" />
+    <defs>
+        <linearGradient id="paint0_linear_1913_205" x1="43" y1="11" x2="43" y2="33" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#EF595C" />
+            <stop offset="1" stop-color="#F67049" />
+        </linearGradient>
+    </defs>
+</svg>
