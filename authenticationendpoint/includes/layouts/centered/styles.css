@@ -149,12 +149,10 @@
   box-sizing: border-box;
 }
 
-/* Chiều cao header: 4px strip + 64px main (desktop), 89px mobile */
 .login-portal.layout {
   --app-header-height: 68px;
 }
 
-/* Chỉ cuộn bên trong .page-wrapper, không cuộn cả trang → form không trèo lên header */
 body.login-portal.layout {
   overflow: auto;
   height: 100vh;
@@ -172,6 +170,7 @@ body.login-portal.layout {
   box-shadow: none !important;
   flex-shrink: 0;
   z-index: 100;
+  background: #ffffff;
 }
 .login-portal.layout .app-header-top-strip {
   height: 4px;
@@ -185,7 +184,11 @@ body.login-portal.layout {
 .login-portal.layout .app-header-bar .justify-between { justify-content: space-between; }
 .login-portal.layout .app-header-bar .items-center { align-items: center; }
 .login-portal.layout .app-header-bar .mx-auto { margin-left: auto; margin-right: auto; }
-.login-portal.layout .app-header-bar .container { width: 100%; box-sizing: border-box; }
+.login-portal.layout .app-header-bar .container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-inline: auto;
+}
 
 .login-portal.layout .app-header-main {
   display: flex;
@@ -195,15 +198,43 @@ body.login-portal.layout {
   height: 64px;
   min-height: 64px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 60px;
+  margin-inline: auto; 
   background: #ffffff;
   border: none !important;
   border-top: none !important;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-wrap: nowrap;
+  gap: 0;
   box-sizing: border-box;
+}
+@media (width >= 40rem) {
+  .login-portal.layout .app-header-bar .container,
+  .login-portal.layout .app-header-main {
+    max-width: 40rem;
+  }
+}
+@media (width >= 48rem) {
+  .login-portal.layout .app-header-bar .container,
+  .login-portal.layout .app-header-main {
+    max-width: 48rem;
+  }
+}
+@media (width >= 64rem) {
+  .login-portal.layout .app-header-bar .container,
+  .login-portal.layout .app-header-main {
+    max-width: 64rem;
+  }
+}
+@media (width >= 80rem) {
+  .login-portal.layout .app-header-bar .container,
+  .login-portal.layout .app-header-main {
+    max-width: 80rem;
+  }
+}
+@media (width >= 96rem) {
+  .login-portal.layout .app-header-bar .container,
+  .login-portal.layout .app-header-main {
+    max-width: 96rem;
+  }
 }
 .login-portal.layout .app-header-logo {
   display: inline-flex;
@@ -460,12 +491,10 @@ body.login-portal.layout {
   font-size: 0;
 }
 
-/* Nút Login responsive: chỉ hiện khi < 1024px, ẩn mặc định */
 .login-portal.layout .app-header-login-btn-responsive {
   display: none;
 }
 
-/* Wrapper mobile: nhóm Login + separator + Hamburger (ẩn desktop, hiện trong media query) */
 .login-portal.layout .app-header-mobile-actions {
   display: none;
   align-items: center;
@@ -490,6 +519,8 @@ body.login-portal.layout {
     padding: 0 16px;
     height: 85px;
     min-height: 85px;
+    justify-content: space-between;
+    gap: 16px;
   }
   .login-portal.layout .app-header-logo-img-default {
     display: none;
@@ -500,15 +531,12 @@ body.login-portal.layout {
     height: 24px;
     object-fit: contain;
   }
-  /* Responsive: chỉ ẩn nav; giữ logo (Logomark) + nút Login + hamburger trên header */
   .login-portal.layout .app-header-nav {
     display: none !important;
   }
-  /* Trên header mobile: ẩn language, chỉ hiện nút Login (language nằm trong drawer) */
   .login-portal.layout .app-header-right .app-header-lang-wrap {
     display: none !important;
   }
-  /* Wrapper mobile: full height như header, gap 32px; margin-right để cả khối dịch vào trong, không đè padding header */
   .login-portal.layout .app-header-mobile-actions {
     display: flex !important;
     align-items: center;
@@ -520,7 +548,6 @@ body.login-portal.layout {
   .login-portal.layout .app-header-login-btn-desktop {
     display: none !important;
   }
-  /* Nút Login responsive: padding 32px, full chiều cao header theo Figma */
   .login-portal.layout .app-header-login-btn-responsive {
     display: inline-flex !important;
     align-items: center;
@@ -559,7 +586,6 @@ body.login-portal.layout {
   }
 }
 
-/* Drawer overlay + panel */
 .login-portal.layout .app-header-drawer {
   position: fixed;
   top: 0;
@@ -663,7 +689,6 @@ body.login-portal.layout {
   line-height: 16px;
   font-weight: 400;
 }
-/* Dropdown menu (popover) khi mở trong drawer: border #FFF, shadow Elevation-Sm */
 .login-portal.layout .app-header-drawer-lang-wrap #language-selector-dropdown-drawer > .menu {
   border: 1px solid #FFFFFF;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
@@ -671,6 +696,7 @@ body.login-portal.layout {
   background: #FFFFFF;
   top: 25px;
   width: fit-content;
+  min-width: 144;
 }
 .login-portal.layout .app-header-drawer-login-btn {
   width: 100%;
@@ -693,7 +719,6 @@ body.login-portal.layout {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 0;
-  padding: 0 0 0 48px;
   height: calc(100vh - var(--app-header-height));
   min-height: 0;
   overflow: auto;
@@ -712,8 +737,6 @@ body.login-portal.layout {
 .login-portal.layout .center-segment {
   width: 100%;
   margin: 0;
-  padding: 24px 16px;
-  padding-top: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -723,9 +746,7 @@ body.login-portal.layout {
 }
 
 .login-portal.layout .center-segment > .ui.container {
-  width: 500px !important;
-  max-width: 500px !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
   padding: 0 !important;
 }
@@ -742,6 +763,7 @@ body.login-portal.layout {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  max-width: 500px;
 }
 
 .login-signup-cards-wrapper .login-card,
@@ -754,8 +776,6 @@ body.login-portal.layout {
   font-family: var(--font-sans);
 }
 .login-portal.layout .login-card {
-  width: 500px;
-  max-width: 500px;
   background: #ffffff;
   border-radius: 16px;
   padding: 40px;
@@ -875,7 +895,7 @@ body.login-portal.layout {
 }
 
 .login-portal.layout .center-segment>.ui.container.medium{
-  max-width: none !important;
+  max-width: 100% !important;
 }
 
 .login-portal.layout .login-card .ui.form .field .ui.input .icon.right-align {
@@ -1013,8 +1033,6 @@ body.login-portal.layout {
 }
 
 .login-portal.layout .signup-card {
-  width: 500px;
-  max-width: 500px;
   background: #ffffff;
   border-radius: 16px;
   padding: 40px;
@@ -1260,6 +1278,14 @@ a:hover {
   max-width: 100%;
   height: 40px;
 }
+.login-portal.layout .otp-card .otp-buttons-wrap .buttons .btn-420x40:disabled,
+.login-portal.layout .otp-card .buttons .btn-420x40:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+  background-color: #F2F2F2;
+  color: #A2A2A2 !important;
+}
 .login-portal.layout .otp-card .resend-otp-link {
   color: #333;
   font-size: 14px;
@@ -1306,4 +1332,16 @@ a:hover {
   background: #F5F5F5;
   color: #1A1A1A;
   border-color: #C5C5C5;
+}
+
+.ui[class*="center aligned"].container {
+  text-align: left;
+}
+
+.ui.button{
+  margin: 0px;
+}
+
+.login-portal.layout .center-segment>.ui.container .ui.segment.segment-layout{
+  min-width: auto;
 }

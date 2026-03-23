@@ -220,7 +220,6 @@
                             <%
                                 if ("true".equals(authenticationFailed)) {
                             %>
-                            <div class="ui negative message" id="failed-msg"><%=Encode.forHtmlContent(errorMessage)%></div>
                             <% } %>
                             <%
                                 String resendCode = request.getParameter("resendCode");
@@ -228,15 +227,6 @@
                             %>
                             <div id="resend-msg" class="ui positive message"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "resend.code.success")%></div>
                             <% } %>
-                            <%
-                                String loginFailed = request.getParameter("authFailure");
-                                if (loginFailed != null && "true".equals(loginFailed)) {
-                                    String authFailureMsg = request.getParameter("authFailureMsg");
-                                    if (authFailureMsg != null && "login.fail.message".equals(authFailureMsg)) {
-                            %>
-                            <div class="ui negative message"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry")%></div>
-                            <%     }
-                                } %>
                             <input type="hidden" name="sessionDataKey" value="<%=Encode.forHtmlAttribute(request.getParameter("sessionDataKey"))%>"/>
                             <input type="hidden" name="resendCode" id="resendCode" value="false"/>
 
@@ -246,6 +236,28 @@
                                     <span class="otp-expiry-text"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "otp.expire.in")%> <span class="otp-expiry-circle" id="otp-expiry-circle-wrap" aria-hidden="false"><svg class="otp-expiry-circle-svg" viewBox="0 0 36 36" aria-hidden="true"><circle class="otp-expiry-circle-bg" cx="18" cy="18" r="16" fill="none" stroke="#DEDEDE" stroke-width="3"/><circle class="otp-expiry-circle-progress" id="otp-expiry-circle-progress" cx="18" cy="18" r="16" fill="none" stroke="#000000" stroke-width="3" stroke-dasharray="100.53 999" stroke-linecap="round" transform="rotate(-90 18 18)"/></svg><span id="otp-expiry-seconds" class="otp-expiry-circle-value">100</span></span><%=AuthenticationEndpointUtil.i18n(resourceBundle, "otp.seconds")%></span>
                                 </div>
                             </div>
+                            <%-- Thông báo lỗi: dưới phần hết hiệu lực, cùng style + icon như basicauth --%>
+                            <% if ("true".equals(authenticationFailed)) { %>
+                            <div class="ui visible visible visible visible negative message" id="failed-msg" data-testid="otp-page-error-message">
+                                <div class="error-message-content">
+                                    <img src="images/_x-circle.svg" width="24" height="24" alt="" class="error-icon">
+                                    <div><%=Encode.forHtmlContent(errorMessage)%></div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <%
+                                String loginFailed = request.getParameter("authFailure");
+                                if (loginFailed != null && "true".equals(loginFailed)) {
+                                    String authFailureMsg = request.getParameter("authFailureMsg");
+                                    if (authFailureMsg != null && "login.fail.message".equals(authFailureMsg)) { %>
+                            <div class="ui visible visible visible visible negative message" data-testid="otp-page-error-message">
+                                <div class="error-message-content">
+                                    <img src="images/_x-circle.svg" width="24" height="24" alt="" class="error-icon">
+                                    <div><%=AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry")%></div>
+                                </div>
+                            </div>
+                            <%   }
+                               } %>
                             <% if (request.getParameter("multiOptionURI") != null &&
                                 AuthenticationEndpointUtil.isValidURL(request.getParameter("multiOptionURI")) &&
                                 request.getParameter("multiOptionURI").contains("backup-code-authenticator")) { %>
@@ -258,7 +270,7 @@
                             <%-- Nút Login + Resend (resend ẩn tạm) --%>
                             <div class="otp-buttons-wrap">
                                 <div class="buttons">
-                                    <button type="button" name="authenticate" id="authenticate" class="btn-420x40" data-testid="login-page-continue-login-button">
+                                    <button type="button" name="authenticate" id="authenticate" class="btn-420x40" data-testid="login-page-continue-login-button" disabled>
                                         <%=AuthenticationEndpointUtil.i18n(resourceBundle, "login.button")%>
                                     </button>
                                     <a class="resend-otp-link" tabindex="0" id="resend" style="display: none;"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "resend.code")%></a>
@@ -266,7 +278,7 @@
                             </div>
                             <%-- Nút Back: history back --%>
                             <div class="otp-back-btn-wrap">
-                                <a class="back-link btn-420x40 otp-back-button" id="goBackLink" href="javascript:void(0)" onclick="history.back(); return false;"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "otp.back")%></a>
+                                <a class="back-link btn-420x40 otp-back-button" id="goBackLink" onclick="event.preventDefault(); window.history.back();"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "otp.back")%></a>
                             </div>
 
                             <input id="multiOptionURI" type="hidden" name="multiOptionURI" value="<%=Encode.forHtmlAttribute(request.getParameter("multiOptionURI"))%>" />
@@ -299,7 +311,13 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#authenticate').click(function () {
+            var $btn = $('#authenticate');
+            $btn.prop('disabled', true);
+            $btn.click(function (e) {
+                if ($(this).prop('disabled') || getOtpCodeFromBoxes().length < 6) {
+                    e.preventDefault();
+                    return false;
+                }
                 <% if (!reCaptchaEnabled) { %>
                     submitForm();
                 <% } %>
@@ -328,6 +346,21 @@
         (function initOtpBoxes() {
             var OTP_LEN = 6;
             function getBox(i) { return document.getElementById('otp-' + i); }
+            function isOtpComplete() {
+                var code = '';
+                for (var i = 1; i <= OTP_LEN; i++) {
+                    var el = getBox(i);
+                    if (el) code += (el.value || '').replace(/\D/g, '').slice(0, 1);
+                }
+                return code.length === OTP_LEN;
+            }
+            function updateSubmitButton() {
+                var btn = document.getElementById('authenticate');
+                if (btn) {
+                    btn.disabled = !isOtpComplete();
+                    if (typeof $ !== 'undefined') $(btn).prop('disabled', !isOtpComplete());
+                }
+            }
             function onInput(e) {
                 var el = e.target;
                 var idx = parseInt(el.getAttribute('data-index'), 10);
@@ -337,6 +370,7 @@
                     var next = getBox(idx + 1);
                     if (next) next.focus();
                 }
+                updateSubmitButton();
             }
             function onKeyDown(e) {
                 var el = e.target;
@@ -345,6 +379,7 @@
                     var prev = getBox(idx - 1);
                     if (prev) { prev.focus(); prev.value = ''; }
                 }
+                setTimeout(updateSubmitButton, 0);
             }
             function onPaste(e) {
                 e.preventDefault();
@@ -358,6 +393,7 @@
                     var next = getBox(nextIdx);
                     if (next) next.focus();
                 }
+                updateSubmitButton();
             }
             $(document).ready(function () {
                 for (var i = 1; i <= OTP_LEN; i++) {
@@ -368,6 +404,7 @@
                         box.addEventListener('paste', onPaste);
                     }
                 }
+                updateSubmitButton();
             });
         })();
 

@@ -1,0 +1,23 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+WSO2 Identity Server Apps - Accounts
+
+
+From: 'an unknown organization'
+  - commons.lang.wso2 (http://wso2.org) commons-lang.wso2:commons-lang:bundle:2.6.0.wso2v1
+
+
+From: 'OWASP (Open Web-Application Security Project)' (https://www.owasp.org/)
+  - JSP Encoder (https://www.owasp.org/index.php/OWASP_Java_Encoder_Project/encoder-jsp) org.owasp.encoder:encoder-jsp:jar:1.2.2
+    License: The BSD 3-Clause License  (http://www.opensource.org/licenses/BSD-3-Clause)
+
+From: 'WSO2' (http://www.wso2.org/)
+  - WSO2 Identity Server Apps - Layout Controlling Tag Library (http://wso2.org) org.wso2.identity.apps:org.wso2.identity.apps.taglibs.layout.controller:jar:3.3.22
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

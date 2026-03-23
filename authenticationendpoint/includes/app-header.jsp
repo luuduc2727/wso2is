@@ -1,5 +1,6 @@
 <%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.AuthenticationEndpointUtil" %>
 <%@ page import="org.owasp.encoder.Encode" %>
+<%@ page import="javax.servlet.http.Cookie" %>
 <jsp:directive.include file="localize.jsp" />
 <%
     // Ensure env is loaded (extensions/header.jsp may not include env.jsp)
@@ -11,14 +12,35 @@
         devPortalUrl = "";
     }
 
-    // Build nav paths from a single base path.
+    // Decide language segment from ui_lang cookie (e.g. vi_VN -> vi, en_US -> en).
+    String langFromCookie = null;
+    Cookie[] headerCookies = request.getCookies();
+    if (headerCookies != null) {
+        for (Cookie c : headerCookies) {
+            if ("ui_lang".equals(c.getName())) {
+                langFromCookie = c.getValue();
+                break;
+            }
+        }
+    }
+    String langSegment = "en";
+    if (langFromCookie != null) {
+        if (langFromCookie.startsWith("vi_VN")) {
+            langSegment = "vi";
+        } else if (langFromCookie.startsWith("en_US")) {
+            langSegment = "en";
+        }
+    }
+
+    // Build nav paths from a single base path + language segment.
     String navBase = devPortalUrl;
     if (navBase.endsWith("/")) {
         navBase = navBase.substring(0, navBase.length() - 1);
     }
-    String apiProductsPath = navBase + "/api-products";
-    String newsPath = navBase + "/news";
-    String supportPath = navBase + "/support";
+    String localizedBase = navBase + "/" + langSegment;
+    String apiProductsPath = localizedBase + "/api-products";
+    String newsPath = localizedBase + "/news";
+    String supportPath = localizedBase + "/support";
 %>
 <div class="app-header-bar">
     <div class="app-header-main">
