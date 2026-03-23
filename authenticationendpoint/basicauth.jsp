@@ -435,21 +435,14 @@
         WebClient.client(selfUserRegistrationResource).header("Authorization", header);
         Response selfRegistrationResponse = selfUserRegistrationResource.regenerateCode(selfRegistrationRequest);
         if (selfRegistrationResponse != null &&  selfRegistrationResponse.getStatus() == HttpStatus.SC_CREATED) {
-%>
-<div class="ui visible positive message">
-    <%=AuthenticationEndpointUtil.i18n(resourceBundle,Constants.ACCOUNT_RESEND_SUCCESS_RESOURCE)%>
-</div>
-<%
-} else {
-%>
-<div class="ui visible negative message">
-    <%=AuthenticationEndpointUtil.i18n(resourceBundle,Constants.ACCOUNT_RESEND_FAIL_RESOURCE)%>
-</div>
-<%
+            request.setAttribute("accountResendSuccess", true);
+        } else {
+            request.setAttribute("accountResendFail", true);
         }
     }
 %>
 
+<% if (false) { %>
 <% if (Boolean.parseBoolean(loginFailed) && errorCode.equals(IdentityCoreConstants.USER_ACCOUNT_NOT_CONFIRMED_ERROR_CODE) && request.getParameter("resend_username") == null) { %>
     <div class="ui visible warning message" id="error-msg" data-testid="login-page-error-message">
 
@@ -564,6 +557,7 @@
 <%
     }
 %>
+<% } %>
 <% if (isAdminAdvisoryBannerEnabledInTenant) { %>
     <div class="ui warning message" data-componentid="login-page-admin-session-advisory-banner">
         <%=Encode.forHtmlContent(adminAdvisoryBannerContentOfTenant)%>
@@ -790,6 +784,129 @@
 
     </div> <!-- .password-and-forgot-wrapper -->
 
+    <% if (Boolean.parseBoolean(loginFailed) && errorCode.equals(IdentityCoreConstants.USER_ACCOUNT_NOT_CONFIRMED_ERROR_CODE) && request.getParameter("resend_username") == null) { %>
+        <div class="ui visible warning message" id="error-msg" data-testid="login-page-error-message">
+
+            <h5 class="ui heading"><strong><%= AuthenticationEndpointUtil.i18n(resourceBundle, "no.confirmation.mail.heading") %></strong></h5>
+
+            <%= AuthenticationEndpointUtil.i18n(resourceBundle, Encode.forJava(errorMessage)) %>
+
+            <div class="ui divider hidden"></div>
+
+            <%=AuthenticationEndpointUtil.i18n(resourceBundle, "no.confirmation.mail")%>
+
+            <a id="registerLink"
+                href="javascript:showResendReCaptcha();"
+                data-testid="login-page-resend-confirmation-email-link"
+            >
+                <%=StringEscapeUtils.escapeHtml4(AuthenticationEndpointUtil.i18n(resourceBundle, "resend.mail"))%>
+            </a>
+        </div>
+        <div class="ui divider hidden"></div>
+        <%
+            if (reCaptchaResendEnabled) {
+                String reCaptchaKey = CaptchaUtil.reCaptchaSiteKey();
+        %>
+            <div class="field">
+                <div class="g-recaptcha"
+                    data-sitekey="<%=Encode.forHtmlAttribute(reCaptchaKey)%>"
+                    data-testid="register-page-g-recaptcha"
+                    data-bind="registerLink"
+                    data-callback="showResendReCaptcha"
+                    data-theme="light"
+                    data-tabindex="-1"
+                >
+                </div>
+            </div>
+        <%
+            }
+        %>
+    <% } else if (Boolean.parseBoolean(loginFailed) && errorCode.equals(IdentityCoreConstants.USER_EMAIL_NOT_VERIFIED_ERROR_CODE) && request.getParameter("resend_username") == null) { %>
+        <div class="ui visible warning message" id="error-msg" data-testid="login-page-error-message">
+
+            <h5 class="ui heading"><strong><%= AuthenticationEndpointUtil.i18n(resourceBundle, "no.email.confirmation.mail.heading") %></strong></h5>
+
+            <%= AuthenticationEndpointUtil.i18n(resourceBundle, Encode.forJava(errorMessage)) %>
+
+            <div class="ui divider hidden"></div>
+
+            <%=AuthenticationEndpointUtil.i18n(resourceBundle, "generic.no.confirmation.mail")%>
+
+            <a id="registerLink"
+                href="javascript:showResendReCaptcha();"
+                data-testid="login-page-resend-confirmation-email-link"
+            >
+                <%=StringEscapeUtils.escapeHtml4(AuthenticationEndpointUtil.i18n(resourceBundle, "resend.mail"))%>
+            </a>
+        </div>
+        <div class="ui divider hidden"></div>
+        <%
+            if (reCaptchaResendEnabled) {
+                String reCaptchaKey = CaptchaUtil.reCaptchaSiteKey();
+        %>
+            <div class="field">
+                <div class="g-recaptcha"
+                    data-sitekey="<%=Encode.forHtmlAttribute(reCaptchaKey)%>"
+                    data-testid="register-page-g-recaptcha"
+                    data-bind="registerLink"
+                    data-callback="showResendReCaptcha"
+                    data-theme="light"
+                    data-tabindex="-1"
+                >
+                </div>
+            </div>
+        <%
+            }
+        %>
+    <% } else if (Boolean.parseBoolean(loginFailed) && errorCode.equals(IdentityCoreConstants.USER_EMAIL_OTP_NOT_VERIFIED_ERROR_CODE) && request.getParameter("resend_username") == null) { %>
+        <div class="ui visible warning message" id="error-msg" data-testid="login-page-error-message">
+
+            <h5 class="ui heading"><strong><%= AuthenticationEndpointUtil.i18n(resourceBundle, "no.email.confirmation.mail.heading") %></strong></h5>
+
+            <%= AuthenticationEndpointUtil.i18n(resourceBundle, Encode.forJava(errorMessage)) %>
+
+            <div class="ui divider hidden"></div>
+
+            <%=AuthenticationEndpointUtil.i18n(resourceBundle, "generic.no.confirmation.mail.otp")%>
+
+            <a id="registerLink"
+                href="javascript:showResendReCaptcha();"
+                data-testid="login-page-resend-confirmation-email-link"
+            >
+                <%=StringEscapeUtils.escapeHtml4(AuthenticationEndpointUtil.i18n(resourceBundle, "resend.mail"))%>
+            </a>
+        </div>
+        <div class="ui divider hidden"></div>
+        <%
+            if (reCaptchaResendEnabled) {
+                String reCaptchaKey = CaptchaUtil.reCaptchaSiteKey();
+        %>
+            <div class="field">
+                <div class="g-recaptcha"
+                    data-sitekey="<%=Encode.forHtmlAttribute(reCaptchaKey)%>"
+                    data-testid="register-page-g-recaptcha"
+                    data-bind="registerLink"
+                    data-callback="showResendReCaptcha"
+                    data-theme="light"
+                    data-tabindex="-1"
+                >
+                </div>
+            </div>
+        <%
+            }
+        %>
+    <% } %>
+
+    <% if (Boolean.TRUE.equals(request.getAttribute("accountResendSuccess"))) { %>
+        <div class="ui visible positive message" id="account-resend-success-message">
+            <%=AuthenticationEndpointUtil.i18n(resourceBundle,Constants.ACCOUNT_RESEND_SUCCESS_RESOURCE)%>
+        </div>
+    <% } else if (Boolean.TRUE.equals(request.getAttribute("accountResendFail"))) { %>
+        <div class="ui visible negative message" id="account-resend-fail-message">
+            <%=AuthenticationEndpointUtil.i18n(resourceBundle,Constants.ACCOUNT_RESEND_FAIL_RESOURCE)%>
+        </div>
+    <% } %>
+
     <% if (StringUtils.equals(request.getParameter("errorCode"), IdentityCoreConstants.USER_ACCOUNT_LOCKED_ERROR_CODE) &&
         StringUtils.equals(request.getParameter("remainingAttempts"), "0")) {
         if (StringUtils.equals(request.getParameter("lockedReason"), "AdminInitiated")) { %>
@@ -1014,8 +1131,8 @@
             //Add a load event listener to each wrapper, using capture.
             element.addEventListener("load", function (e) {
                 //Get the data-tabindex attribute value from the wrapper.
-                var tabindex = e.currentTarget.getAttribute("data-tabindex");
-                //Check if the attribute is set.
+                 var tabindex = e.currentTarget.getAttribute("data-tabindex");
+               //Check if the attribute is set.
                 if (tabindex) {
                     //Set the tabIndex on the iframe.
                     e.target.tabIndex = "-1";
